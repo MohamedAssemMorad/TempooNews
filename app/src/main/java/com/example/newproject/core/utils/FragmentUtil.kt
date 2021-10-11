@@ -1,8 +1,8 @@
-package com.example.theair.core.utils
+package com.example.newproject.core.utils
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.theair.R
+import com.example.newproject.R
 import com.example.theair.core.helpers.TransitionType
 
 object FragmentUtil {

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
+import com.example.newproject.presentation.view.customviews.HomeToolbar
 import com.example.theair.core.utils.NetworkUtil
 
 open class BaseFragment : Fragment() {

@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.newproject.presentation.view.activity.HomeActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +18,7 @@ class SplashScreen : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     startActivity(
-                        Intent(this, HomeActivity::class.java),
-                        ActivityOptions.makeSceneTransitionAnimation(this).toBundle()
+                        Intent(this, HomeActivity::class.java)
                     )
                 }
             }
