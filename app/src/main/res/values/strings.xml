@@ -8,6 +8,7 @@
     <string name="author">Author</string>
     <string name="url">Url</string>
     <string name="publishedAt">PublishedAt</string>
+    <string name="source">View Source</string>
     <string name="content">Content</string>
     <string name="search">Search</string>
     <string name="search_services">Search News</string>

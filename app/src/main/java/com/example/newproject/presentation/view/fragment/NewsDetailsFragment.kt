@@ -1,5 +1,7 @@
 package com.example.newproject.presentation.view.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +35,11 @@ class NewsDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setAllData()
+        btnSource?.setOnClickListener {
+            val i =
+                Intent(Intent.ACTION_VIEW, Uri.parse(newsDetails?.url))
+            startActivity(i)
+        }
     }
 
     override fun onResume() {
@@ -40,11 +47,6 @@ class NewsDetailsFragment : BaseFragment() {
         toolbarProcess()
     }
 
-    private fun fetchBundle(arguments: Bundle?) {
-
-    }
-
-    // set data for movie details screen for selected movie from list screen
     private fun setAllData() {
 
         newsDetails?.let {
