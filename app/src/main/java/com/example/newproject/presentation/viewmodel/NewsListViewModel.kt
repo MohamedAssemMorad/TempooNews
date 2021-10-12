@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.newproject.data.model.NewsResponse
 import com.example.newproject.data.repository.NewsRepository
 
-public class NewsListViewModel(
+class NewsListViewModel(
     private val repository: NewsRepository
 ) : ViewModel() {
 

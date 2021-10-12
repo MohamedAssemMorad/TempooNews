@@ -7,12 +7,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.newproject.BaseFragment
 import com.example.newproject.R
 import com.example.newproject.core.utils.FragmentUtil
 import com.example.newproject.data.model.ArticleResponse
 import com.example.newproject.presentation.view.adapter.NewsListAdapter
+import com.example.newproject.presentation.view.adapter.PaginationListener
 import com.example.newproject.presentation.viewmodel.NewsListViewModel
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -24,12 +26,6 @@ class NewsListFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private val newsList: ArrayList<ArticleResponse> = ArrayList()
     private val newsListViewModel: NewsListViewModel by viewModel()
     private var newsListAdapter: NewsListAdapter? = null
-
-//    private val currentPage: Int = PAGE_START
-//    private val isLastPage = false
-//    private val totalPage = 10
-//    private val isLoading = false
-//    var itemCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,8 +39,6 @@ class NewsListFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        swipeRefresh?.setOnRefreshListener(this)
-//        rvNewsList?.setHasFixedSize(true)
         getNewsList("")
         etSearch?.setOnEditorActionListener(TextView.OnEditorActionListener() { textView: TextView, i: Int, keyEvent: KeyEvent ->
             if ((keyEvent != null && (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (i == EditorInfo.IME_ACTION_DONE)) {
@@ -88,12 +82,7 @@ class NewsListFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
             .observe(this, Observer {
                 pbLoader.visibility = View.GONE
                 if (!it?.articles.isNullOrEmpty()) {
-
                     newsList.addAll(it?.articles ?: ArrayList())
-//                    GlobalScope.launch {
-//                        postsViewModel.callDeletePostsLocally()
-//                        postsViewModel.savePosts(postsList!!)
-//                    }
                     adapterProcess()
                 } else {
                     Toast.makeText(mContext, "Something went wrong", Toast.LENGTH_LONG).show()
